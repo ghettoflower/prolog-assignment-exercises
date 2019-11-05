@@ -1,12 +1,18 @@
 qr(N1,N2,Quotient,Remainder):- (Quotient is N1//N2, Remainder is N1 mod N2).
 
-q3:- write('Enter the first number'), read(N1), nl, write('Enter the second number'), read(N2), nl, write('The quotient is '), qr(Quotient), nl, write('The remainder is '), qr(Remainder).
-qr(Remainder):- write(N1//N2).
-qr(Quotient):- write(N1 mod N2).
+qr(N1,N2):- qr(N1,N2,Quotient,Remainder), write(N1), write(' divided by '), write(N2), write(' is '),
+write(Quotient), write(' Remainder '), write(Remainder), nl.
 
-q5:- write('Enter the lenth of the rectangle'), read(LENGTH), nl,
-write('Enter the width of the rectange'), read(WIDTH), nl,
-area(LENGTH, WIDTH, Z), write('The area of the rectangle is '), write(Z).
+/*qr(N1,N2):- (Quotient is N1//N2, Remainder is N1 mod N2), write('The quotient is '), write(Quotient), nl, write('The remainder is '), write(Remainder), nl.
+*/
 
+q3():- write('Enter the first number'), read(N1), nl, write('Enter the second number'), read(N2), nl,
+write('The quotient is '), write(X is N1 // N2), nl,
+write('The remainder is '), write(Y is N1 mod N2), nl.
+
+q5():- write('Input length'), read(LENGTH),
+write('Input width'), read(WIDTH),
+area(LENGTH, WIDTH, Z), write('Area of rectangle is '), write(Z), nl,
+perimeter(LENGTH, WIDTH, P), write('Perimeter is '), write(P), nl.
 area(X, Y, Z):- Z is X*Y.
-
+perimeter(X, Y, Z):- Z is (X+Y) * 2.
