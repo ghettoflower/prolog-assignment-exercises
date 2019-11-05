@@ -7,8 +7,8 @@ write(Quotient), write(' Remainder '), write(Remainder), nl.
 */
 
 q3():- write('Enter the first number'), read(N1), nl, write('Enter the second number'), read(N2), nl,
-write('The quotient is '), write(X is N1 // N2), nl,
-write('The remainder is '), write(Y is N1 mod N2), nl.
+write('The quotient is '), Q is N1//N2, write(Q), nl,
+write('The remainder is '), R is N1 mod N2, write(R), nl.
 
 q5():- write('Input length'), read(LENGTH),
 write('Input width'), read(WIDTH),
