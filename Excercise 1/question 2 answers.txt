@@ -1,0 +1,13 @@
+Q2.1 car(_,_,_,X,white,_).
+
+Q2.2 car(_,_,X,_,_,1995).
+
+Q2.3 car(X, Y, Z, P, blue, R).
+
+Q2.4 car(_,03,X,_,_,Y). -- rule4(X) :- car(_,03,_,_,_,X). 
+
+Q2.5 car(07, _, X, _, Y, _). -- rule5(X) :- car(07,_, _,_, X,_).
+
+Q2.6 car(_,_,X,_,Y, 1991), not(Y=white). -- rule6(X) :- car(_,_,X,_,Z,1991), Z \= white.
+
+Q2.7 car(X,01,Y, Z, blue, Q>1991). -- rule7(X, Y, Z) :- car(X,01,Y, Z, blue, Q), Q>1991.

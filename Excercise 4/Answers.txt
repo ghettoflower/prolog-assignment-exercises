@@ -1,0 +1,63 @@
+Task 4.1
+
+1) Q1 Part A: Write the base case of a predicate, del/3, that takes an element and a list, and returns a list with a single occurrence of that element removed.
+Write only the base case in answer to this question.
+
+
+del(_,[],[]).
+
+2) Q1 Part B: Write the second clause of a predicate, del/3, that takes an element and a list, and returns a list with a single occurrence of that element removed.
+Write only the second clause of del/3 in answer to this question.
+
+del(H,[H|T],T).
+
+3) Q1 Part C: Write the third clause of a predicate, del/3, that takes an element and a list, and returns a list with a single occurrence of that element removed.
+Write only the third clause of del/3 in answer to this question.
+
+del(X,[H|T],[H|L]):- del(X,T,L).
+
+
+4) Q1 Part D: Change one of the 3 previous clauses so that the predicate del/3 now returns a list with ALL occurrences of the element to be removed deleted from the list.
+Write only the clause you have changed in answer to this question.
+
+del(H,[H|T],L):- del(H,T,L).
+
+Task 4.2
+
+1) Q1 Part a): Write the base case of a predicate, size_of_list/2, that takes a list and returns the number of elements in it.
+Define predicate as size_of_list( Num, List )
+
+size_of_list(0,[]).
+
+2) Q1 Part b): Write the recursive clause of a predicate, size_of_list/2, that takes a list and returns the number of elements in it.
+
+size_of_list(Num,[_|Tail]):- size_of_list(Num1,Tail), Num is Num1+1.
+
+3) Q2 Part a): Write the base case of a predicate, find_total/2, that takes a list of numbers and returns the total when the numbers in that list are added together.
+Define as find_total( Num, List).
+
+find_total(0,[]).
+
+4) Q2 Part b): Write the recursive case of a predicate, find_total/2, that takes a list of numbers and returns the total when the numbers in that list are added together.
+
+find_total(Num,[Head|Tail]):-find_total(Num1,Tail), Num is Head+Num1.
+
+5) Q3 Part a): Write the base case of a predicate, find_average/2, that takes a list of numbers and finds the average value of the numbers in the list.
+Define as find_average( Av, List ). You should also use predicates previously defined in this exercise.
+
+find_average(0,[]).
+
+6) Q3 Part b): Write the recursive case of a predicate, find_average/2, that takes a list of numbers and finds the average value of the numbers in the list.
+You should also use predicates previously defined in this exercise.
+
+find_average(Av,[Head|Tail]):-find_total(Num,[Head|Tail]),size_of_list(Num1,[Head|Tail]), Av is Num/Num1.
+
+7) Q4 Part a): Write the base case of a predicate, find_max/2, that takes a list of numbers and returns the highest number in the list.
+Define as find_max( Max, List ).
+
+find_max(X,[X]).
+
+8) Q4 Part b): Write the recursive case of a predicate, find_max/2, that takes a list of numbers and returns the highest number in the list.
+The answer to this question makes use of an if-then-else statement in the recursive clause.
+
+find_max(Max,[Head|Tail]):- find_max(Num, Tail), (Head > Num -> Max = Head ; Max = Num).

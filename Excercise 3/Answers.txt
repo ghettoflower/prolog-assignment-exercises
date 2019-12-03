@@ -1,0 +1,37 @@
+Ex. 3.1
+
+Write prolog clauses for the stopping condition of a GCD function that uses Stein's algorithm (see definitions below).
+A more efficient way of calculating the GCD is using Stein’s algorithm. This shortcuts the subtractions done in the conventional Euclidean algorithm, replacing the larger of the two numbers by its remainder when divided by the smaller. The stopping condition is now when one reaches a zero remainder – when this happens, the GCD is the (non-zero) number that is left.
+Develop a prolog predicate, gcds/3, to compute the GCD of two non-negative numbers using Stein's algorithm.
+Assume the format gcds( Int1, Int2, Gcd).
+
+1) gcd(Int1, 0, Int1):- !.
+gcd(0, Int1, Int1):- !.
+
+Write prolog clauses for the recursive portion of a GCD function that uses Stein's algorithm (see definitions below).
+A more efficient way of calculating the GCD is using Stein’s algorithm. This shortcuts the subtractions done in the conventional Euclidean algorithm, replacing the larger of the two numbers by its remainder when divided by the smaller. The stopping condition is now when one reaches a zero remainder – when this happens, the GCD is the (non-zero) number that is left.
+Develop a prolog predicate, gcds/3, to compute the GCD of two non-negative numbers using Stein's algorithm.
+Assume the format gcds( Int1, Int2, Gcd).
+
+2) gcd(Int1, Int2, Gcd):- Int1 > 0, Int1 > Int2, !, N is Int1 mod Int2, gcd(Int2, N, Gcd).
+gcd(Int1, Int2, Gcd):- Int2 > 0, Int1 < Int2, !, N is Int2 mod Int1, gcd(Int1, N, Gcd).
+
+Ex. 3.2
+
+Write the base case for power/3.
+Assume the format power( R1, Int, R2), where R2 is equal to R1 to the power of Int).
+
+1) power(_,0,1).
+
+Write the recursive clause for power/3.
+Assume the format power( R1, Int, R2), where R2 is equal to R1 to the power of Int).
+
+2) power(R1,Int,R2) :- M is Int - 1, power(R1,M,N), R2 is N*R1.
+
+Explain how your algorithm works, especially the recursive aspect of it.
+
+3) Int is the power that R1 is raised to, in order to get the answer R2. In order to obtain the answer, Int is decremented and this value is declared
+as M. R1 and M are then inputted into another power/3 clause in a recursive manner. This keeps going on until R1 to the power of 0 is reached.
+Any number to the power of 0 gives an answer of 1. This is also the base case of power/3. Once Int reaches the value of 0, the function breaks out of the recursive clause and the
+algorithm will work sort of 'in reverse'. It will calculate what R1 to the power of 1 is, then set R2 as that value. This repeats itself until the power index reaches
+the same number as Int.
