@@ -1,0 +1,32 @@
+Exercise 5
+
+1) Provide a query that shows that the prolog predicate sublist/2 does not work as per the given definition below.
+
+A sublist is defined as a list that makes up a contiguous part of a larger list, eg, [3,4,5] is a sublist of [1,2,3,4,5,6], whereas [2,4,5] is not.
+
+
+sublist([2,4,5],[1,2,3,4,5,6]).
+
+2) sublist_of/2 (below) replicates the system predicate sublist/2. Explain, with reference to the given code, why it does not work as per the given sublist definition.
+
+A sublist is defined as a list that makes up a contiguous part of a larger list, eg, [3,4,5] is a sublist of [1,2,3,4,5,6], whereas [2,4,5] is not.
+Prolog code for sublist is:
+sublist_of(_,[]):-fail.
+sublist_of([X],[X|_]).
+sublist_of([H|T],[H|T2]):-sublist_of(T,T2).
+sublist_of([X|Y],[_|T]):-sublist_of([X|Y],T).
+
+The code for sublist_of/2 does not work as per the sublist definition because it considered [2,4,5] as valid, because they are still in a sequence. A sequence is not the same as a sublist,
+but the code considered that as valid because the numbers still appeared in the list after each other, just not immediately.
+
+ 
+3) The 'bug' in sublist_of can be solved by looking at the lists two elements at a time. Modify the third clause in the code below to fix the problem of contiguity.
+A sublist is defined as a list that makes up a contiguous part of a larger list, eg, [3,4,5] is a sublist of [1,2,3,4,5,6], whereas [2,4,5] is not.
+Prolog code for sublist is:
+sublist_of(_,[]):-fail.
+sublist_of([X],[X|_]).
+sublist_of([H|T],[H|T2]):-sublist_of(T,T2).
+sublist_of([X|Y],[_|T]):-sublist_of([X|Y],T).
+
+
+sublist_of([X|[T1|T2]],[X|[T1|T3]]):- sublist_of([T1|T2],[T1|T3]).
